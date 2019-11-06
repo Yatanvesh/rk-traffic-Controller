@@ -2,29 +2,31 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
  
 import key from '../apikey';
+import Marker from './Marker';
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-class CustomMap extends Component {
- 
-  render() {
+const map = (props) => {
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:'' }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          defaultCenter={props.center}
+          defaultZoom={props.zoom}
         >
-          {/* <AnyReactComponent
-            lat={temple.lat}
-            lng={temple.lng}
-            text="Temple"
-          /> */}
+          { Object.keys(props.clients).map( id => {
+            const client  = props.clients[id];
+            return (
+              <Marker
+                key={id}
+                lat={client.lat}
+                lng={client.lng}
+                text={id}
+              />
+            )
+          })}
         </GoogleMapReact>
       </div>
     );
-  }
 }
  
-export default CustomMap;
+export default map;
