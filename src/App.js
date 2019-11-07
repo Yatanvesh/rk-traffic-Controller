@@ -1,14 +1,13 @@
 import React from 'react';
-import './App.css';
-import socket, {getLocationData} from './API';
 
+import './App.css';
+import {getLocationData} from './API';
 import Map from './components/Map';
-// socket.emit('LOCATION', "hello dan");
 
 const centerCoords = {
   lat:13.128535,
   lng:77.589421
-}
+};
 
 class App extends React.Component {
 
@@ -18,9 +17,7 @@ class App extends React.Component {
       lng: centerCoords.lng
     },
     zoom: 16,
-    clients:{
-
-    }
+    clients:{}
   };
 
   componentDidMount() {
@@ -28,13 +25,12 @@ class App extends React.Component {
   }
 
   onDataReceive= (data) => {
-    // let
     let {clients} = this.state;
-    let {id,lat,lng} = data;
+    let {id,coords,type} = data;
     if(id){
       clients[id] = {
-        lat,
-        lng
+        coords,
+        type
       }
     }
     this.setState({clients});
@@ -43,6 +39,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <h1 className={'Heading'}>TRAFFIC CONTROLLER</h1>
         <Map
           center={this.state.center}
           zoom={this.state.zoom}

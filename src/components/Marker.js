@@ -1,23 +1,41 @@
 import React from 'react';
-import {FaCarSide, FaTruck, FaBus, FaMotorcycle} from 'react-icons/fa';
+import {FaCarSide, FaTruck, FaBus, FaMotorcycle,FaTrafficLight} from 'react-icons/fa';
 // import {IoIosCar} from 'react-icons/io'
 import {IconContext} from "react-icons";
-import {lightPink} from "../constants";
+import {boldBlue, lettuce, lightPink, green,amber,red} from "../constants";
+import {greatPlaceStyle, greatPlaceStyleHover} from './hoverStyles';
 
-const types = {
-    car:<FaCarSide/>,
+const markerTypes = {
+    car: <FaCarSide/>,
     truck: <FaTruck/>,
     bus: <FaBus/>,
-    bike: <FaMotorcycle/>
+    bike: <FaMotorcycle/>,
+    trafficLightGreen: <FaTrafficLight/>,
+    trafficLightRed:<FaTrafficLight/>,
+    trafficLightAmber:<FaTrafficLight/>
 };
 
-const marker = ({text,type='bike'}) => {
+const colorTypes = {
+    car: lightPink,
+    truck: boldBlue,
+    bus: boldBlue,
+    bike: lettuce,
+    trafficLightGreen:green,
+    trafficLightRed:red,
+    trafficLightAmber:amber
+};
 
+const marker = (props) => {
+    const {text, type = 'bike', $hover} = props;
+    const style = $hover ? greatPlaceStyleHover : greatPlaceStyle;
+    const color = colorTypes[type];
     return (
-        <IconContext.Provider value={{size: '2em', color: lightPink, className: "global-class-name"}}>
-            {text}
-            {types[type]}
-        </IconContext.Provider>
+        <div style={style}>
+            <IconContext.Provider value={{size: '2em', color, className: "global-class-name"}}>
+                {text}
+                {markerTypes[type]}
+            </IconContext.Provider>
+        </div>
     )
 };
 
