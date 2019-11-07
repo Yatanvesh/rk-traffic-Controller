@@ -4,10 +4,7 @@ import './App.css';
 import {getLocationData} from './API';
 import Map from './components/Map';
 
-const centerCoords = {
-  lat:13.128535,
-  lng:77.589421
-};
+import {centerCoords} from './constants';
 
 class App extends React.Component {
 
