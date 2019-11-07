@@ -6,7 +6,6 @@ import Marker from './Marker';
 
 const map = (props) => {
     return (
-      // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key:'' }}
