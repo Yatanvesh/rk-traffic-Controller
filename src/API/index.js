@@ -19,4 +19,20 @@ export const getMultiLocationData = cb => {
     });
 };
 
+export const sendSignal = async (signal='Start') =>{
+    try{
+        fetch(url, {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            
+
+        });
+    }catch(eror){
+        console.log("Eror in signal", eror);
+    }
+}
+
 export default socket;

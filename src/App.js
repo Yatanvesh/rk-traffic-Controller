@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css';
 import {getLocationData, getMultiLocationData} from './API';
 import Map from './components/Map';
+import Button from './components/Options'
 
 import {centerCoords} from './constants';
 
@@ -65,6 +66,8 @@ class App extends React.Component {
           zoom={this.state.zoom}
           clients={this.state.clients}
         />
+        <Button />
+        
       </div>
     );
   }
