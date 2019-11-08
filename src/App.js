@@ -1,7 +1,11 @@
 import React from 'react';
 
 import './App.css';
+<<<<<<< HEAD
 import {getLocationData, sendSignal} from './API';
+=======
+import {getLocationData, getMultiLocationData} from './API';
+>>>>>>> 94e7a84eb4712943dca56552d0468f96bf618fa4
 import Map from './components/Map';
 import Button from './components/Options';
 import Chart from './components/chart';
@@ -21,6 +25,7 @@ class App extends React.Component {
 
   componentDidMount() {
     getLocationData(this.onDataReceive);
+    getMultiLocationData(this.onMultiDataReceive);
   }
 
   onDataReceive= (data) => {
@@ -34,6 +39,28 @@ class App extends React.Component {
     }
     this.setState({clients});
   };
+
+  onMultiDataReceive = (data) => {
+    // console.log("Got ", data);
+    const {vehicles} = data;
+    if(!vehicles){
+      console.log("No vehicles");
+      return;
+    }
+    const {clients} = this.state; 
+    vehicles.map(vehicle => {
+        if(vehicle.id){
+          clients[vehicle.id] = {
+            coords:{
+              lat:vehicle.lat,
+              lng:vehicle.lng
+            },
+            type:'car'
+          }
+        }
+    })
+    this.setState({clients});
+  }
 
   render(){
     return (

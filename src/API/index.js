@@ -8,7 +8,13 @@ let socket = io.connect(url);
 export const getLocationData = cb => {
     socket.on('LOCATION', function(data) {
         console.log('Received', data);
-        // socket.emit('my other event', { my: 'data' });
+        cb(data);
+    });
+};
+
+export const getMultiLocationData = cb => {
+    socket.on('LOCATIONS', function(data) {
+        console.log('Received', data);
         cb(data);
     });
 };
