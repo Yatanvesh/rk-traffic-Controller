@@ -3,6 +3,7 @@ import GoogleMapReact from 'google-map-react';
  
 import key from '../apikey';
 import Marker from './Marker';
+import Chart from './Chart';
 
 const createMapOptions =   (maps)  => {
     return {
@@ -14,10 +15,11 @@ const createMapOptions =   (maps)  => {
 
 
 const map = (props) => {
+  console.log("signals",props.signals)
     return (
       <div className={'MapContainer'}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key:'' }}
+          bootstrapURLKeys={{ key }}
           defaultCenter={props.center}
           defaultZoom={props.zoom}
           hoverDistance={30}
@@ -35,6 +37,20 @@ const map = (props) => {
               />
             )
           })}
+          {
+            Object.keys(props.signals).map( id => {
+              const signal  = props.signals[id];
+              let {coords,state} = signal;
+              return (
+                <Chart
+                  key={id}
+                  lat={coords.lat}
+                  lng={coords.lng}
+                  light={state}
+                />
+              )
+            })
+          }
         </GoogleMapReact>
       </div>
     );

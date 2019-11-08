@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const cherryRed = '#fb5b5a';
 export const lightPink = '#f35588';
 export const boldBlue = '#9be3de';
@@ -23,7 +21,7 @@ export const centerCoords = {
     lng: 77.589421,
   };
   
-export const signalSize = 45;
+export const signalSize = 30;
 
 export const signalColors={
     'r':'#FF0013',

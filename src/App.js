@@ -1,14 +1,12 @@
 import React from 'react';
 
 import './App.css';
-<<<<<<< HEAD
-import {getLocationData, sendSignal} from './API';
-=======
-import {getLocationData, getMultiLocationData} from './API';
->>>>>>> 94e7a84eb4712943dca56552d0468f96bf618fa4
+
+import {getClientLocationData,getSignalData ,sendSignal,getMultiLocationData} from './API';
+
 import Map from './components/Map';
 import Button from './components/Options';
-import Chart from './components/chart';
+import Chart from './components/Chart';
 import {centerCoords} from './constants';
 
 class App extends React.Component {
@@ -20,16 +18,18 @@ class App extends React.Component {
     },
     zoom: 16,
     clients:{},
-    signals:{}
+    trafficSignals:{}
   };
 
   componentDidMount() {
-    getLocationData(this.onDataReceive);
+    getClientLocationData(this.onDataReceive);
     getMultiLocationData(this.onMultiDataReceive);
+    getSignalData(this.ongetSignalData);
   }
 
   onDataReceive= (data) => {
     let {clients} = this.state;
+    
     let {id,coords,type} = data;
     if(id){
       clients[id] = {
@@ -41,7 +41,6 @@ class App extends React.Component {
   };
 
   onMultiDataReceive = (data) => {
-    // console.log("Got ", data);
     const {vehicles} = data;
     if(!vehicles){
       console.log("No vehicles");
@@ -58,9 +57,34 @@ class App extends React.Component {
             type:'car'
           }
         }
-    })
+    });
+    
     this.setState({clients});
   }
+
+  ongetSignalData=(data)=>{
+    const {signals} = data;
+    if(!signals){
+      console.log("No Signals");
+      return;
+    }
+    const {trafficSignals} = this.state; 
+    signals.map(signal => {
+        if(signal.id){
+          trafficSignals[signal.id] = {
+            coords:{
+              lat:signal.lat,
+              lng:signal.lng
+            },
+            state:signal.state
+          }
+        }
+    });
+    
+    this.setState({trafficSignals});
+
+  }
+
 
   render(){
     return (
@@ -70,6 +94,7 @@ class App extends React.Component {
           center={this.state.center}
           zoom={this.state.zoom}
           clients={this.state.clients}
+          signals={this.state.trafficSignals}
         />
         <Button 
           cb={sendSignal}

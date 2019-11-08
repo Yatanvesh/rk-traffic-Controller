@@ -6,10 +6,10 @@ class Options extends React.Component{
         const {cb} = this.props;
         return(
             <div>
-                <button onClick={()=>cb('Start')} className={'green'}>Start</button>
-                <button onClick={()=>cb('Reset')} className={'red'}>Reset</button>
-                <button onClick={()=>cb('Pause')} className={'blue'}>Pause</button>  
-                <button onClick={()=>cb('Something')} className={'something'}>Something</button>          
+                <button onClick={()=>cb('start')} className={'green'}>Start</button>
+                <button onClick={()=>cb('reset')} className={'red'}>Reset</button>
+                <button onClick={()=>cb('pause')} className={'blue'}>Pause</button>  
+                <button onClick={()=>cb('fetch')} className={'something'}>Fetch</button>          
             </div>
         );
     }
