@@ -1,10 +1,10 @@
 import React from 'react';
 
 import './App.css';
-import {getLocationData} from './API';
+import {getLocationData, sendSignal} from './API';
 import Map from './components/Map';
-import Button from './components/Options'
-
+import Button from './components/Options';
+import Chart from './components/chart';
 import {centerCoords} from './constants';
 
 class App extends React.Component {
@@ -15,7 +15,8 @@ class App extends React.Component {
       lng: centerCoords.lng
     },
     zoom: 16,
-    clients:{}
+    clients:{},
+    signals:{}
   };
 
   componentDidMount() {
@@ -43,7 +44,12 @@ class App extends React.Component {
           zoom={this.state.zoom}
           clients={this.state.clients}
         />
-        <Button />
+        <Button 
+          cb={sendSignal}
+        />
+        <Chart 
+          light={'grgfygyrrG'}
+        />
         
       </div>
     );

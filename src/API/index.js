@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
 
-const url = 'http://rkserver.herokuapp.com';
+// const url = 'http://rkserver.herokuapp.com';
+const url = 'http://localhost:3002';
 //const url = 'http://d2e73afd.ngrok.io';
 let socket = io.connect(url);
 
@@ -14,15 +15,8 @@ export const getLocationData = cb => {
 
 export const sendSignal = async (signal='Start') =>{
     try{
-        fetch(url, {
-            method:'POST',
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-              },
-            
-
-        });
+        
+        socket.emit('CONTROL',signal);
     }catch(eror){
         console.log("Eror in signal", eror);
     }

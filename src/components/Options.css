@@ -1,0 +1,40 @@
+.green{
+    background-color: rgb(4, 167, 9); /* Green */
+    border: 2px solid rgb(0, 88, 3);
+    color: white;
+    padding: 20px 140px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+.red{
+    background-color: rgb(245, 108, 108); /* Green */
+    border: 2px solid #FF0000;
+    color: black;
+    padding: 20px 140px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+.blue{
+    background-color: rgb(67, 134, 173); /* Green */
+    border: 2px solid rgb(23, 143, 241);
+    color: white;
+    padding: 20px 140px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+.something{
+    background-color: rgb(247, 170, 76); /* Green */
+    border: 2px solid #FF8C00;
+    color: black;
+    padding: 20px 140px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }

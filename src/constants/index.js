@@ -23,3 +23,10 @@ export const centerCoords = {
     lng: 77.589421,
   };
   
+export const signalSize = 45;
+
+export const signalColors={
+    'r':'#FF0013',
+    'g':'#00FF1F',
+    'y':'#FFFF00'
+}
