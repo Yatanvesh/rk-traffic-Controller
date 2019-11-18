@@ -1,40 +1,65 @@
-.green{
-    background-color: rgb(4, 167, 9); /* Green */
-    border: 2px solid rgb(0, 88, 3);
-    color: white;
-    padding: 20px 140px;
-    text-align: center;
+
+  .green{
+    color: #fff !important;
+    text-transform: uppercase;
     text-decoration: none;
+    background: rgb(4, 167, 9);
+    padding: 20px 140px;
+    border-radius: 5px;
     display: inline-block;
-    font-size: 16px;
-  }
+    border: none;
+    transition: all 0.4s ease 0s;
+    }
 .red{
-    background-color: rgb(245, 108, 108); /* Green */
-    border: 2px solid #FF0000;
-    color: black;
-    padding: 20px 140px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #990000;
+  padding: 20px 140px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
   }
 .blue{
-    background-color: rgb(67, 134, 173); /* Green */
-    border: 2px solid rgb(23, 143, 241);
-    color: white;
-    padding: 20px 140px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: rgb(37, 186, 255);
+  padding: 20px 140px;
+  border-radius: 5px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
   }
-.something{
-    background-color: rgb(247, 170, 76); /* Green */
-    border: 2px solid #FF8C00;
-    color: black;
-    padding: 20px 140px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+.green:hover {
+  background: #434343;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
   }
+.red:hover {
+  background: #434343;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
+  }
+.blue:hover {
+  background: #434343;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
+  }
+
+.ButtonParent{
+  position: absolute;
+  bottom: 10px;
+  z-index: 1001;
+  border-radius: 500px;
+}

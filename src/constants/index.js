@@ -15,10 +15,11 @@ export const markerTypes = {
     trafficLightRed: 'trafficLightRed',
     trafficLightAmber: 'trafficLightAmber',
 };
+// 12.973074, 77.612366
 
 export const centerCoords = {
-    lat: 13.128535,
-    lng: 77.589421,
+    lat: 12.973074,
+    lng: 77.612366,
   };
   
 export const signalSize = 30;

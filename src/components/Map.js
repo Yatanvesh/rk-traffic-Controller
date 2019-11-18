@@ -4,6 +4,9 @@ import GoogleMapReact from 'google-map-react';
 import key from '../apikey';
 import Marker from './Marker';
 import Chart from './Chart';
+import rakuten from '../assets/rakuten.png';
+
+import {centerCoords} from '../constants'; 
 
 const createMapOptions =   (maps)  => {
     return {
@@ -13,11 +16,14 @@ const createMapOptions =   (maps)  => {
     }
 };
 
+const Rakuten = () => (
+  <img src={rakuten} lat={centerCoords.lat} lng={centerCoords.lng} width="40" />
+)
 
 const map = (props) => {
-  console.log("signals",props.signals)
+  const rotationStyle = {  transform: `rotate(0deg)`,    }
+
     return (
-      <div className={'MapContainer'}>
         <GoogleMapReact
           bootstrapURLKeys={{ key }}
           defaultCenter={props.center}
@@ -26,7 +32,8 @@ const map = (props) => {
         >
           { Object.keys(props.clients).map( id => {
             const client  = props.clients[id];
-            let {coords,type} = client;
+            
+            let {coords,type,angle} = client;
             return (
               <Marker
                 key={id}
@@ -34,6 +41,7 @@ const map = (props) => {
                 lng={coords.lng}
                 text={id}
                 type={type}
+                angle={angle}
               />
             )
           })}
@@ -42,17 +50,23 @@ const map = (props) => {
               const signal  = props.signals[id];
               let {coords,state} = signal;
               return (
+                <div style={rotationStyle}
+                lat={coords.lat}
+                  lng={coords.lng}>
+                
                 <Chart
                   key={id}
-                  lat={coords.lat}
-                  lng={coords.lng}
+                  
                   light={state}
                 />
+                </div>
               )
             })
           }
+          {Rakuten()}
+
         </GoogleMapReact>
-      </div>
+      
     );
 }
  

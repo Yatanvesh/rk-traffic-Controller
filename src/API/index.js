@@ -1,9 +1,9 @@
 import io from 'socket.io-client';
 
-// const url = 'http://rkserver.herokuapp.com';
 // const url = 'http://localhost:3002';
-//const url = 'http://d2e73afd.ngrok.io';
-const url = 'http://192.168.31.242:3002';
+// const url = 'http://d2e73afd.ngrok.io';
+const url='http://rkserver.herokuapp.com'
+// const url = 'http://10.99.7.214:3002';
 let socket = io.connect(url);
 // let socket=io.connect(url);
 
@@ -16,14 +16,14 @@ export const getClientLocationData = cb => {
 
 export const getMultiLocationData = cb => {
     socket.on('LOCATIONS', function(data) {
-        console.log('Received Vehicle LOCATIONS', data);
+        // console.log('Received Vehicle LOCATIONS', data);
         cb(data);
     });
 };
 
 export const getSignalData = cb =>{
     socket.on('SIGNALS',function(data){
-        console.log('Received Signal LOCATIONS', data);
+        // console.log('Received Signal LOCATIONS', data);
         cb(data);
     })
 }
